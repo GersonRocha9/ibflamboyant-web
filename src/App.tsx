@@ -58,6 +58,23 @@ export function App() {
     setPrayerRequests(prayerRequests as PrayerRequestProps[])
   }
 
+  async function getPrayersFromLastSevenDays() {
+    const lastSevenDaysInIso = new Date(
+      new Date().getTime() - 7 * 24 * 60 * 60 * 1000,
+    ).toISOString()
+
+    const { data: prayerRequests } = await supabase
+      .from('prayers')
+      .select('*')
+      .gte('created_at', lastSevenDaysInIso)
+
+    prayerRequests?.sort((a, b) => {
+      return new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    })
+
+    setPrayerRequests(prayerRequests as PrayerRequestProps[])
+  }
+
   async function getBabiesPresentationFromDatabase() {
     const { data: babiesPresentation } = await supabase.from('baby').select('*')
 
@@ -80,6 +97,22 @@ export function App() {
           <h1 className="text-3xl font-bold text-center text-gray-900">
             Pedidos de oração
           </h1>
+
+          <div className="flex space-x-4">
+            <button
+              onClick={() => getPrayerRequestsFromDatabase()}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Mostrar todos
+            </button>
+
+            <button
+              onClick={() => getPrayersFromLastSevenDays()}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              7 dias
+            </button>
+          </div>
 
           <PDFDownloadLink
             document={<PrayersPDFFile prayerRequests={prayerRequests} />}
