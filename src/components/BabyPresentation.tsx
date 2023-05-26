@@ -12,7 +12,7 @@ export function BabyPresentation() {
   >(['baby'], fetchBabiesPresentation)
 
   return (
-    <div className="py-8">
+    <div className="py-8 px-4 w-full mx-auto">
       {babyLoading ? (
         <div className="flex justify-center items-center">
           <p className="text-3xl font-bold text-center text-gray-900">

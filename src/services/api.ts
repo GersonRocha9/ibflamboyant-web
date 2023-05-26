@@ -7,10 +7,10 @@ export const supabase = createClient(
   import.meta.env.VITE_SUPABASE_TOKEN,
 )
 
-export const fetchPrayerRequests = async () => {
-  const currentDate = new Date()
-  const sevenDaysAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000)
+const currentDate = new Date()
+const sevenDaysAgo = new Date(currentDate.getTime() - 7 * 24 * 60 * 60 * 1000)
 
+export const fetchPrayerRequests = async () => {
   const { data } = await supabase
     .from('prayers')
     .select('*')
@@ -25,6 +25,8 @@ export const fetchBabiesPresentation = async () => {
   const { data } = await supabase
     .from('baby')
     .select('*')
+    .gte('created_at', sevenDaysAgo.toISOString())
+    .lte('created_at', currentDate.toISOString())
     .order('created_at', { ascending: false })
 
   return data as BabiesPresentationProps[]
