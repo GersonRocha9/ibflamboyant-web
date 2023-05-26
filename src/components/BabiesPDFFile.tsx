@@ -8,17 +8,19 @@ enum WorshipDate {
 }
 
 interface BabiesPresentationProps {
-  babiesPresentations: {
-    babyAge: string
-    babyName: string
-    created_at: string
-    fatherName: string
-    id: number
-    isMember: boolean
-    motherName: string
-    phone: string
-    worshipDate: keyof typeof WorshipDate
-  }[]
+  babiesPresentations:
+    | {
+        babyAge: string
+        babyName: string
+        created_at: string
+        fatherName: string
+        id: number
+        isMember: boolean
+        motherName: string
+        phone: string
+        worshipDate: keyof typeof WorshipDate
+      }[]
+    | undefined
 }
 
 export function BabiesPDFFile({
@@ -27,7 +29,7 @@ export function BabiesPDFFile({
   return (
     <Document>
       <Page style={{ ...styles.body, backgroundColor: '#fff' }}>
-        {babiesPresentations.map((baby, index) => {
+        {babiesPresentations?.map((baby, index) => {
           return (
             <div key={index}>
               <Text style={styles.text}>

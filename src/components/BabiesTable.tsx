@@ -9,17 +9,19 @@ enum WorshipDate {
 }
 
 interface TableProps {
-  data: {
-    babyAge: string
-    babyName: string
-    created_at: string
-    fatherName: string
-    id: number
-    isMember: boolean
-    motherName: string
-    phone: string
-    worshipDate: keyof typeof WorshipDate
-  }[]
+  data:
+    | {
+        babyAge: string
+        babyName: string
+        created_at: string
+        fatherName: string
+        id: number
+        isMember: boolean
+        motherName: string
+        phone: string
+        worshipDate: keyof typeof WorshipDate
+      }[]
+    | undefined
 }
 
 export const BabiesTable: React.FC<TableProps> = ({ data }) => {
@@ -57,7 +59,7 @@ export const BabiesTable: React.FC<TableProps> = ({ data }) => {
         </tr>
       </thead>
       <tbody className="bg-white divide-y divide-gray-200">
-        {data.map((item, index) => (
+        {data?.map((item, index) => (
           <tr key={item.id}>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               {index + 1}

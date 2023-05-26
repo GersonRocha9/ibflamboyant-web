@@ -2,13 +2,15 @@ import React from 'react'
 import { convertDate } from '../utils'
 
 interface TableProps {
-  data: {
-    created_at: string
-    id: number
-    name: string
-    phone: string
-    prayerRequest: string
-  }[]
+  data:
+    | {
+        created_at: string
+        id: number
+        name: string
+        phone: string
+        prayerRequest: string
+      }[]
+    | undefined
 }
 
 export const PrayersTable: React.FC<TableProps> = ({ data }) => {
@@ -34,7 +36,7 @@ export const PrayersTable: React.FC<TableProps> = ({ data }) => {
         </tr>
       </thead>
       <tbody className="bg-white divide-y divide-gray-200">
-        {data.map((item, index) => (
+        {data?.map((item, index) => (
           <tr key={item.id}>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               {index + 1}

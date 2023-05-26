@@ -1,20 +1,22 @@
 import { Document, Page, StyleSheet, Text } from '@react-pdf/renderer'
 
 interface PrayerRequestProps {
-  prayerRequests: {
-    created_at: string
-    id: number
-    name: string
-    phone: string
-    prayerRequest: string
-  }[]
+  prayerRequests:
+    | {
+        created_at: string
+        id: number
+        name: string
+        phone: string
+        prayerRequest: string
+      }[]
+    | undefined
 }
 
 export function PrayersPDFFile({ prayerRequests }: PrayerRequestProps) {
   return (
     <Document>
       <Page style={{ ...styles.body, backgroundColor: '#fff' }}>
-        {prayerRequests.map((prayer, index) => {
+        {prayerRequests?.map((prayer, index) => {
           return (
             <div key={index}>
               <Text
