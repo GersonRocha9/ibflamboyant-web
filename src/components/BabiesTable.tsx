@@ -1,12 +1,6 @@
 import React from 'react'
+import { WorshipDate } from '../types'
 import { convertDate } from '../utils'
-
-enum WorshipDate {
-  wednesday20 = 'Quarta-feira - 20h',
-  sunday10 = 'Domingo - 10h',
-  sunday18 = 'Domingo - 18h',
-  sunday20 = 'Domingo - 20h',
-}
 
 interface TableProps {
   data:
@@ -33,13 +27,13 @@ export const BabiesTable: React.FC<TableProps> = ({ data }) => {
             #
           </th>
           <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Nome
+            Nome do bebê
           </th>
           <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
             Idade
           </th>
           <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Data da Solicitação
+            Data da solicitação
           </th>
           <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
             Mãe
@@ -51,10 +45,10 @@ export const BabiesTable: React.FC<TableProps> = ({ data }) => {
             Telefone
           </th>
           <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Data do Culto
+            Data do culto
           </th>
           <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Membro
+            É membro?
           </th>
         </tr>
       </thead>

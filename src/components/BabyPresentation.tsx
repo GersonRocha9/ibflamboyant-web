@@ -1,5 +1,6 @@
 import { BabiesPDFFile, BabiesTable } from '../components'
 
+import { Spinner } from '@chakra-ui/react'
 import { FilePdf } from '@phosphor-icons/react'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { useQuery } from '@tanstack/react-query'
@@ -15,9 +16,7 @@ export function BabyPresentation() {
     <div className="py-8 px-4 w-full mx-auto">
       {babyLoading ? (
         <div className="flex justify-center items-center">
-          <p className="text-3xl font-bold text-center text-gray-900">
-            Carregando
-          </p>
+          <Spinner color="green.900" />
         </div>
       ) : (
         <>
