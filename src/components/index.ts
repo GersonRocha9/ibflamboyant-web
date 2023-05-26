@@ -1,4 +1,6 @@
 export { BabiesPDFFile } from './BabiesPDFFile'
 export { BabiesTable } from './BabiesTable'
+export { BabyPresentation } from './BabyPresentation'
 export { PrayersPDFFile } from './PrayersPDFFile'
+export { PrayersPresentation } from './PrayersPresentation'
 export { PrayersTable } from './PrayersTable'
