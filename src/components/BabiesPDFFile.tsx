@@ -1,11 +1,6 @@
 import { Document, Page, StyleSheet, Text } from '@react-pdf/renderer'
 
-enum WorshipDate {
-  wednesday20 = 'Quarta-feira - 20h',
-  sunday10 = 'Domingo - 10h',
-  sunday18 = 'Domingo - 18h',
-  sunday20 = 'Domingo - 20h',
-}
+import { WorshipDate } from '../types'
 
 interface BabiesPresentationProps {
   babiesPresentations:
@@ -31,7 +26,7 @@ export function BabiesPDFFile({
       <Page style={{ ...styles.body, backgroundColor: '#fff' }}>
         {babiesPresentations?.map((baby, index) => {
           return (
-            <div key={index}>
+            <div key={index} style={styles.itemContainer}>
               <Text style={styles.text}>
                 {`Nome: ${baby.babyName}\nIdade: ${baby.babyAge}\nMãe: ${
                   baby.motherName
@@ -53,7 +48,11 @@ const styles = StyleSheet.create({
     paddingBottom: 65,
     paddingHorizontal: 35,
   },
-
+  itemContainer: {
+    flexDirection: 'row',
+    marginBottom: 10,
+    border: '1px solid #000',
+  },
   text: {
     margin: 12,
     fontSize: 14,

@@ -18,7 +18,7 @@ export function PrayersPDFFile({ prayerRequests }: PrayerRequestProps) {
       <Page style={{ ...styles.body, backgroundColor: '#fff' }}>
         {prayerRequests?.map((prayer, index) => {
           return (
-            <div key={index}>
+            <div key={index} style={styles.itemContainer}>
               <Text
                 style={styles.text}
               >{`Nome: ${prayer.name}\nTelefone: ${prayer.phone}\nPedido de oração: ${prayer.prayerRequest}`}</Text>
@@ -36,7 +36,11 @@ const styles = StyleSheet.create({
     paddingBottom: 65,
     paddingHorizontal: 35,
   },
-
+  itemContainer: {
+    flexDirection: 'row',
+    marginBottom: 10,
+    border: '1px solid #000',
+  },
   text: {
     margin: 12,
     fontSize: 14,
