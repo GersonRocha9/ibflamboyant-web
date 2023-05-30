@@ -1,5 +1,6 @@
+import { convertDate, limitCharacters } from '../utils'
+
 import React from 'react'
-import { convertDate } from '../utils'
 
 interface TableProps {
   data:
@@ -51,7 +52,7 @@ export const PrayersTable: React.FC<TableProps> = ({ data }) => {
               {item.phone}
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-              {item.prayerRequest}
+              {limitCharacters(item.prayerRequest)}
             </td>
           </tr>
         ))}
